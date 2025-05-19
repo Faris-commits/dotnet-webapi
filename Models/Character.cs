@@ -1,3 +1,5 @@
+using dotnet_webapi.Models;
+
 public class Character
 {
 
@@ -14,5 +16,7 @@ public class Character
     public int Intelligence { get; set; } = 10;
 
     public RpgCLass Class { get; set; } = RpgCLass.Knight;
+
+    public User? User { get; set; }
 
 }
