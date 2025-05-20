@@ -29,12 +29,12 @@ namespace dotnet_rpg.Controllers
             _characterService = characterService;
         }
 
-        
+
         [HttpGet("GetAll")]
 
         public async Task<ActionResult<ServiceResponse<List<GetCharacterDto>>>> Get()
         {
-        
+
             return Ok(await _characterService.GetAllCharacters());
         }
         [HttpGet("{id}")]
@@ -59,7 +59,7 @@ namespace dotnet_rpg.Controllers
             }
             return Ok(response);
         }
-         [HttpDelete("{id}")]
+        [HttpDelete("{id}")]
         public async Task<ActionResult<ServiceResponse<GetCharacterDto>>> DeleteCharacter(int id)
         {
             var response = await _characterService.DeleteCharacter(id);
@@ -68,6 +68,12 @@ namespace dotnet_rpg.Controllers
                 return NotFound(response);
             }
             return Ok(response);
+        }
+        [HttpPost("Skill")]
+
+        public async Task<ActionResult<ServiceResponse<GetCharacterDto>>> AddCharacterSkill(AddCharacterSkillDto newCharacterSkill)
+        {
+            return Ok(await _characterService.AddCharacterSkill(newCharacterSkill));
         }
     }
 
